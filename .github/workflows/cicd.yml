@@ -40,8 +40,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: 22
           script: |
-            sudo -i
-            cd /var/lib/docker/data/alpaca
-            docker pull 038430574073.dkr.ecr.us-east-2.amazonaws.com/alpaca-data:latest
-            docker-compose up --detach --build app
+            sudo cd /var/lib/docker/data/alpaca
+            sudo docker pull 038430574073.dkr.ecr.us-east-2.amazonaws.com/alpaca-data:latest
+            sudo docker-compose up --detach --build app
           
