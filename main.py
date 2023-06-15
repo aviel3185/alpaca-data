@@ -1,14 +1,12 @@
 from datetime import datetime
-import time
+import pycron
 
 
-def main():
-    while True:
-        print("Hello World, time is now, ", datetime.now())
-
-        # Wait for 1 second
-        time.sleep(1)
+@pycron.cron("* * * * * */20")
+async def test(timestamp: datetime):
+    print(f"test cron job running at {timestamp}")
+    print("hi")
 
 
 if __name__ == '__main__':
-    main()
+    pycron.start()

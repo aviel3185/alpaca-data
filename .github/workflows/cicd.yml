@@ -34,4 +34,10 @@ jobs:
     steps:
       - name: Deploy
         run: |
-          echo hi
+          echo "${{ secrets.SSH_KEY }}" > alpaca.pem
+          ssh ubuntu@18.219.96.252 -i alpaca.pem
+          sudo su
+          cd /var/lib/docker/data/alpaca
+          docker pull 038430574073.dkr.ecr.us-east-2.amazonaws.com/alpaca-data:latest
+          docker-compose up --detach --build app
+          
