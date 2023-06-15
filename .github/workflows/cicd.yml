@@ -42,5 +42,5 @@ jobs:
           script: |
             sudo cd /var/lib/docker/data/alpaca
             sudo docker pull 038430574073.dkr.ecr.us-east-2.amazonaws.com/alpaca-data:latest
-            sudo docker-compose up --detach --build app
+            sudo docker-compose -f docker-compose.yml up --detach --build app
           
