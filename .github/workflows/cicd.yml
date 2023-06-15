@@ -35,7 +35,7 @@ jobs:
       - name: Deploy
         run: |
           echo "${{ secrets.SSH_KEY }}" > alpaca.pem
-          ssh ubuntu@18.219.96.252 -i -T alpaca.pem
+          ssh -t ubuntu@18.219.96.252 -i alpaca.pem
           sudo su
           cd /var/lib/docker/data/alpaca
           docker pull 038430574073.dkr.ecr.us-east-2.amazonaws.com/alpaca-data:latest
