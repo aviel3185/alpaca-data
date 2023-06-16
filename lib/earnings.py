@@ -34,11 +34,10 @@ def poll_earnings_event():
     print(f"Polling at {datetime.now()}")
     today = datetime.now().date()
     yesterday = today - timedelta(days=1)
-    tomorrow = today + timedelta(days=10)
-    query = EarningsDate.select().where(EarningsDate.date.between(yesterday, tomorrow.strftime("%Y-%m-%d")))
+    tomorrow = today + timedelta(days=1)
+    query = EarningsDate.select().where(EarningsDate.date.between(yesterday, tomorrow))
     rows = query.execute()
     tickers = list(map(lambda row: row.ticker, rows))
-    tickers.append('stld')
     url = "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=8-K&output=atom"
     response = requests.get(url, headers=SEC_API_HEADERS)
     html_content = response.content
