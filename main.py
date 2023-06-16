@@ -9,7 +9,7 @@ if __name__ == '__main__':
     schedule.every(20).seconds.do(poll_earnings_event)
 
     # ingest_earnings_calendar()
-    poll_earnings_event()
+    # poll_earnings_event()
 
     while True:
         schedule.run_pending()
